@@ -1,19 +1,14 @@
 package util;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.util.converter.IntegerStringConverter;
 import ucr.lab.HelloApplication;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Optional;
 
-public class FXUtil {
+public class FXUtility {
 
     public static void loadPage(String className, String page, BorderPane bp) {
         try {
@@ -25,38 +20,17 @@ public class FXUtil {
             throw new RuntimeException(e);
         }
     }
-    public static TextFormatter<Integer> getTextFormatterInteger() {
-        return new TextFormatter<>(new IntegerStringConverter(), 0,
-                change -> (change.getControlNewText().matches("\\d*")) ? change : null);
-    }
 
     public static Alert alert(String title, String headerText){
         Alert myalert = new Alert(Alert.AlertType.INFORMATION);
         myalert.setTitle(title);
         myalert.setHeaderText(headerText);
         DialogPane dialogPane = myalert.getDialogPane();
-        String css = Objects.requireNonNull(HelloApplication.class.getResource("/ucr/lab/stylesheet.css")).toExternalForm();
+        String css = HelloApplication.class.getResource("dialog.css").toExternalForm();
         dialogPane.getStylesheets().add(css);
         dialogPane.getStyleClass().add("myDialog");
         return myalert;
     }
-
-    public static Alert informationDialog(String title) {
-        Alert myalert = new Alert(Alert.AlertType.NONE);
-        myalert.setAlertType(Alert.AlertType.INFORMATION);
-        myalert.setTitle(title);
-        myalert.setHeaderText(null);
-        return myalert;
-    }
-
-    public static Alert confirmationDialog(String title) {
-        Alert myalert = new Alert(Alert.AlertType.NONE);
-        myalert.setAlertType(Alert.AlertType.CONFIRMATION);
-        myalert.setTitle(title);
-        myalert.setHeaderText(null);
-        return myalert;
-    }
-
 
     public static TextInputDialog dialog(String title, String headerText){
         TextInputDialog dialog = new TextInputDialog();
@@ -79,7 +53,7 @@ public class FXUtil {
         myalert.getDialogPane().getButtonTypes().add(buttonTypeNo);
         //dialog.getDialogPane().getButtonTypes().add(buttonTypeOk);
         DialogPane dialogPane = myalert.getDialogPane();
-        String css = Objects.requireNonNull(HelloApplication.class.getResource("dialog.css")).toExternalForm();
+        String css = HelloApplication.class.getResource("dialog.css").toExternalForm();
         dialogPane.getStylesheets().add(css);
         Optional<ButtonType> result = myalert.showAndWait();
         //if((result.isPresent())&&(result.get()== ButtonType.OK)) {
@@ -87,5 +61,4 @@ public class FXUtil {
             return "YES";
         else return "NO";
     }
-
 }

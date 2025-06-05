@@ -1,4 +1,14 @@
-package domain;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package domain.stack;
+
+/**
+ *
+ * @author Profesor Lic. Gilberth Chaves A.
+ */
 public class LinkedStack implements Stack {
     private Node top;// es un apuntador
     private int counter; //cont elementos apilados
@@ -7,22 +17,22 @@ public class LinkedStack implements Stack {
         this.top = null;
         this.counter = 0;
     }
-
-
+    
     @Override
     public int size() {
         return counter;
     }
-
+    
     @Override
     public void clear() {
         top = null;
-        counter = 0;
+        this.counter = 0;
     }
 
     @Override
     public boolean isEmpty() {
         return top==null;
+        //return counter==0;
     }
 
     @Override
@@ -31,7 +41,7 @@ public class LinkedStack implements Stack {
             throw new StackException("Linked Stack is empty");
         return top.data;
     }
-
+    
     @Override
     public Object top() throws StackException {
         if(isEmpty())
@@ -42,9 +52,14 @@ public class LinkedStack implements Stack {
     @Override
     public void push(Object element) throws StackException {
         Node newNode = new Node(element);
-        if(!isEmpty())
-            newNode.next = top;
-        top = newNode; //le decimos a tope que apunte a newNode
+        if(isEmpty()){
+            //creamos un nuevo nodo
+            top = newNode;
+        }
+        else{
+            newNode.next = top; //hacemos el enlace entre nodos
+            top = newNode; //la decimos a tope q apunte a newNode
+        }
         this.counter++; //incremento el contador
     }
 
@@ -52,29 +67,29 @@ public class LinkedStack implements Stack {
     public Object pop() throws StackException {
         if(isEmpty())
             throw new StackException("Linked Stack is empty");
-        Object topData = top.data;
-        top = top.next; //movemos top al sgte nodo
+        Object topElement = top.data;
+        top = top.next; //movemos tope al sgte nodo
         counter--;
-        return topData;
+        return topElement;
     }
-
+    
     @Override
     public String toString() {
         if(isEmpty()) return "Linked Stack is Empty";
-        String result="Linked Stack Content:\n";
-        try{
+        String result = "\nLinked Stack Content";
+        try {
             LinkedStack aux = new LinkedStack();
-            while(!isEmpty()){
-                result+=peek()+"\n";
-                aux.push(pop());
+            while(!isEmpty()){           
+                    result+="\n"+peek();
+                    aux.push(pop());
             }
-            //ahora debemos dejar la pila en su estado original
-            while(!aux.isEmpty()){
+            
+            //dejamos la pila como al inicio
+            while(!aux.isEmpty()){           
                 push(aux.pop());
             }
-
-        }catch(StackException ex){
-            System.out.println(ex.getMessage());
+        } catch (StackException ex) {
+                System.out.println(ex.getMessage());
         }
         return result;
     }
