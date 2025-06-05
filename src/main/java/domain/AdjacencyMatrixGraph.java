@@ -262,7 +262,7 @@ public class AdjacencyMatrixGraph implements Graph {
                     //si existe peso que lo muestre
                     if(compare(adjacencyMatrix[i][j],1)!=0){
                         // si matriz[fila][col]!=1existe peso
-                        result+="WEIGHT:"+adjacencyMatrix[i][j];
+                        result+="  WEIGHT:"+adjacencyMatrix[i][j];
 
                     }
 

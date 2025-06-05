@@ -57,7 +57,16 @@ public class Utility {
 
         return "Unknown";
     }
-
+    //PARA Adjenency Matrix Graph TEST:
+    public static String getColor() {
+        String[] colors = {
+                "Red", "Blue", "Green", "Yellow", "Purple", "Orange", "Pink",
+                "Brown", "Black", "White", "Gray", "Violet", "Indigo", "Cyan",
+                "Magenta", "Turquoise", "Gold", "Silver", "Beige", "Maroon",
+                "Navy", "Teal", "Lime", "Olive", "Coral"
+        };
+        return colors[random(colors.length - 1)];
+    }
     public static int maxArray(int[] a) {
         int max = a[0]; //first element
         for (int i = 1; i < a.length; i++) {
