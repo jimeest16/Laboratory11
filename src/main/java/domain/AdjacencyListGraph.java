@@ -297,4 +297,11 @@ public class AdjacencyListGraph implements Graph {
 
         return result;
     }
+    public Object getVertexAt(int index) throws GraphException {
+        if (index < 0 || index >= counter) {
+            throw new GraphException("Índice fuera de rango");
+        }
+        return vertexList[index].data;
+    }
+
 }

@@ -27,6 +27,11 @@ public class Utility {
     public static int random(int bound) {
         return new Random().nextInt(bound);
     }
+    public static int randomMinMax(int min, int max) {
+        return new Random().nextInt((max - min) + 1) + min;
+    }
+
+
 
     public static int compare(Object a, Object b) {
         switch (instanceOf(a, b)){
