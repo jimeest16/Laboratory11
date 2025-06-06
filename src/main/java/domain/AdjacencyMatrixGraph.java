@@ -9,8 +9,8 @@ import domain.stack.StackException;
 import static util.Utility.compare;
 
 public class AdjacencyMatrixGraph implements Graph {
-    private Vertex[] vertexList; //arreglo de objetos tupo vértice
-    private Object[][] adjacencyMatrix; //arreglo bidimensional
+    public Vertex[] vertexList; //arreglo de objetos tupo vértice
+    public Object[][] adjacencyMatrix; //arreglo bidimensional
     private int n; //max de elementos
     private int counter; //contador de vertices
 
@@ -262,7 +262,7 @@ public class AdjacencyMatrixGraph implements Graph {
                     //si existe peso que lo muestre
                     if(compare(adjacencyMatrix[i][j],1)!=0){
                         // si matriz[fila][col]!=1existe peso
-                        result+="WEIGHT:"+adjacencyMatrix[i][j];
+                        result+="  WEIGHT:"+adjacencyMatrix[i][j];
 
                     }
 

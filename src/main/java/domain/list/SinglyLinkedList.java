@@ -1,6 +1,6 @@
 package domain.list;
 
-import domain.EdgdeWeight;
+import domain.EdgeWeight;
 import domain.Vertex;
 
 public class SinglyLinkedList implements List {
@@ -248,7 +248,7 @@ public class SinglyLinkedList implements List {
             if (edges != null && !edges.isEmpty()) {
                 Node edgeNode = edges.first;
                 while (edgeNode != null) {
-                    EdgdeWeight edge = (EdgdeWeight) edgeNode.data;
+                    EdgeWeight edge = (EdgeWeight) edgeNode.data;
                     result.append("  - Edge: ").append(edge.getEdge())
                             .append(", Weight: ").append(edge.getWeight())
                             .append("\n");

@@ -1,7 +1,8 @@
 package controller;
 
 import domain.AdjacencyListGraph;
-import domain.EdgdeWeight;
+import domain.EdgeWeight;
+import domain.EdgeWeight;
 import domain.GraphException;
 import domain.list.ListException;
 import domain.list.SinglyLinkedList;
@@ -144,7 +145,7 @@ public class LinkedGraphController {
                 SinglyLinkedList vecinos = graph.getAdjacencyListVertices(v1);
 
                 for (int j = 1; j <= vecinos.size(); j++) {
-                    EdgdeWeight edge = (EdgdeWeight) vecinos.getNode(j).getData();
+                    EdgeWeight edge = (EdgeWeight) vecinos.getNode(j).getData();
                     String v2 = (String) edge.getEdge();
                     int idxV2 = indexOfVertex(v2);
                     if (idxV2 == -1 || i >= idxV2) continue;
@@ -190,7 +191,7 @@ public class LinkedGraphController {
                 SinglyLinkedList vecinos = graph.getAdjacencyListVertices(v1);
 
                 for (int j = 1; j <= vecinos.size(); j++) {
-                    EdgdeWeight edge = (EdgdeWeight) vecinos.getNode(j).getData();
+                    EdgeWeight edge = (EdgeWeight) vecinos.getNode(j).getData();
                     String v2 = (String) edge.getEdge();
                     int idxV2 = indexOfVertex(v2);
 

@@ -3,10 +3,12 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import ucr.lab.HelloApplication;
+
 import java.io.IOException;
 
 public class HelloController {
@@ -16,7 +18,6 @@ public class HelloController {
     private BorderPane bp;
     @FXML
     private AnchorPane ap;
-
     public void load (String form){
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(form));
         try {
@@ -28,7 +29,7 @@ public class HelloController {
 
     @FXML
     public void Home(ActionEvent actionEvent) {
-        this.txtMessage.setText("Laboratory No. 10" +
+        this.txtMessage.setText("Laboratory No. 11" +
                 "\n Click on the bottons in your left!");
         this.bp.setCenter(ap);
     }
@@ -38,18 +39,18 @@ public class HelloController {
         System.exit(0);
     }
 
-    @FXML
-    public void LinkedGraphic(ActionEvent actionEvent) {
-        load("/ucr/lab/LinkedGraph.fxml");
-    }
-    @FXML
-    public void AdjacencyMatrix(ActionEvent actionEvent) {
-        load("/ucr/lab/AdjacencyMatrix.fxml");
-    }
-    @FXML
-    public void Operations(ActionEvent actionEvent) {
-        load("/ucr/lab/operation.fxml");
+    public void AdjacencyMatrixGraph(ActionEvent actionEvent) {
+        load("/ucr/lab/adjacencyMatrixGraph.fxml");
     }
 
+    public void AdjacencyListGraph(ActionEvent actionEvent) {
+        load("/ucr/lab/listGraph.fxml");
+    }
 
+    public void SinglyLinkedListGraph(ActionEvent actionEvent) {
+        load("/ucr/lab/linkedGraph.fxml");
+    }
+    public void MatrizOperations(ActionEvent actionEvent) {
+        load("/ucr/lab/matrixOperation.fxml");
+    }
 }

@@ -15,17 +15,22 @@
                     <Font name="Arial Bold Italic" size="30.0" />
                 </font>
             </Button>
-            <Button layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#LinkedGraphic" prefHeight="62.0" prefWidth="219.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Linked Graphic" textFill="#000000b2">
+            <Button layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#AdjacencyMatrixGraph" prefHeight="62.0" prefWidth="219.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Matrix Graph" textFill="#000000b2">
                 <font>
                     <Font name="Arial Bold Italic" size="22.0" />
                 </font>
             </Button>
-            <Button layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#AdjacencyMatrix" prefHeight="62.0" prefWidth="219.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Matrix Operation" textFill="#000000b2">
+            <Button layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#AdjacencyListGraph" prefHeight="62.0" prefWidth="219.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="List Graph" textFill="#000000b2">
                 <font>
                     <Font name="Arial Bold Italic" size="19.0" />
                 </font>
             </Button>
-            <Button layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#Operations" prefHeight="62.0" prefWidth="219.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Bst/AVL Operations" textFill="#000000b2">
+            <Button layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#SinglyLinkedListGraph" prefHeight="62.0" prefWidth="219.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Linked Graph" textFill="#000000b2">
+                <font>
+                    <Font name="Arial Bold Italic" size="19.0" />
+                </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#MatrizOperations" prefHeight="62.0" prefWidth="219.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Matrix Operations" textFill="#000000b2">
                 <font>
                     <Font name="Arial Bold Italic" size="19.0" />
                 </font>
@@ -39,7 +44,7 @@
     </left>
     <center>
         <AnchorPane fx:id="ap" prefHeight="712.0" prefWidth="786.0" style="-fx-background-color: #afd6dc;" BorderPane.alignment="CENTER">
-            <Text fx:id="txtMessage" fill="#f7f7f7" layoutX="4.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: #dde7ba;" text="Laboratory No. 11" textAlignment="CENTER" wrappingWidth="781.94921875">
+            <Text fx:id="txtMessage" fill="#f7f7f7" layoutX="4.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: #dde7ba;" text="Laboratory No. 10" textAlignment="CENTER" wrappingWidth="781.94921875">
                 <font>
                     <Font name="Elephant" size="55.0" />
                 </font>
