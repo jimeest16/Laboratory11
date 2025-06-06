@@ -8,61 +8,60 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxWidth="785.0" prefHeight="690.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LinkedOperationController">
-   <children>
-      <Pane prefHeight="71.0" prefWidth="788.0" style="-fx-background-color: #c4f5f4;">
-         <children>
-            <Label layoutX="101.0" layoutY="13.0" text="Singly Linked Graph Operations">
-               <font>
-                  <Font name="Elephant" size="36.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane layoutX="10.0" layoutY="81.0" prefHeight="129.0" prefWidth="778.0">
-         <children>
-            <Button layoutX="261.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleRemoveVertex" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #f7a3a3;" text="Remove Vertex">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button layoutX="462.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddEdge" prefHeight="45.0" prefWidth="257.0" style="-fx-background-color: #f4f79a;" text="Add Edge &amp; Weight">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button layoutX="60.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleRandomize" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #d8c4f5;" text="Randomize">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button layoutX="261.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddVertex" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #c4f5cd;" text="Add Vertex">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button layoutX="462.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleRemoveEdge" prefHeight="45.0" prefWidth="257.0" style="-fx-background-color: #f5bcd5;" text="Remove Edge &amp; Weight">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button layoutX="60.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleClear" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #c0cdd1;" text="Clear">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <TextArea fx:id="textArea" layoutX="8.0" layoutY="267.0" prefHeight="415.0" prefWidth="375.0" />
-      <Label fx:id="label" layoutX="14.0" layoutY="223.0" prefHeight="44.0" prefWidth="746.0" text="Info of the graph">
-         <font>
-            <Font name="Elephant" size="20.0" />
-         </font>
-      </Label>
-      <Pane fx:id="pane" layoutX="394.0" layoutY="267.0" prefHeight="415.0" prefWidth="383.0">
-         <children>
-            <Canvas fx:id="canvas" height="415.0" layoutX="4.0" width="375.0" />
-         </children>
-      </Pane>
-   </children>
+<AnchorPane maxWidth="785.0" prefHeight="690.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LinkedOperationController">
+    <Pane prefHeight="71.0" prefWidth="788.0" style="-fx-background-color: #c4f5f4;">
+        <Label layoutX="101.0" layoutY="13.0" text="Singly Linked Graph Operations">
+            <font>
+                <Font name="Elephant" size="36.0"/>
+            </font>
+        </Label>
+    </Pane>
+    <Pane layoutX="10.0" layoutY="81.0" prefHeight="129.0" prefWidth="778.0">
+        <Button layoutX="261.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleRemoveVertex"
+                prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #f7a3a3;" text="Remove Vertex">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Button>
+        <Button layoutX="462.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddEdge" prefHeight="45.0"
+                prefWidth="257.0" style="-fx-background-color: #f4f79a;" text="Add Edge &amp; Weight">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Button>
+        <Button layoutX="60.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleRandomize" prefHeight="45.0"
+                prefWidth="161.0" style="-fx-background-color: #d8c4f5;" text="Randomize">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Button>
+        <Button layoutX="261.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddVertex" prefHeight="45.0"
+                prefWidth="161.0" style="-fx-background-color: #c4f5cd;" text="Add Vertex">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Button>
+        <Button layoutX="462.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleRemoveEdge" prefHeight="45.0"
+                prefWidth="257.0" style="-fx-background-color: #f5bcd5;" text="Remove Edge &amp; Weight">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Button>
+        <Button layoutX="60.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleClear" prefHeight="45.0"
+                prefWidth="161.0" style="-fx-background-color: #c0cdd1;" text="Clear">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Button>
+    </Pane>
+    <TextArea fx:id="textArea" layoutX="8.0" layoutY="267.0" prefHeight="415.0" prefWidth="375.0"/>
+    <Label fx:id="label" layoutX="14.0" layoutY="223.0" prefHeight="44.0" prefWidth="746.0" text="Info of the graph">
+        <font>
+          <Font name="Elephant" size="20.0"/>
+        </font>
+    </Label>
+    <Pane fx:id="pane" layoutX="394.0" layoutY="267.0" prefHeight="415.0" prefWidth="383.0">
+        <Canvas fx:id="canvas" height="415.0" layoutX="4.0" width="375.0"/>
+    </Pane>
 </AnchorPane>

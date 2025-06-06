@@ -29,13 +29,11 @@ public class LinkedOperationController {
     private double scale = 1.0;
     private final double SCALE_DELTA = 1.1;
     private Alert alert;
-    private Alert infoAlert;
 
     @FXML
     private void initialize() {
         alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Singly Linked Graph -  Error");
-        infoAlert = FXUtil.informationDialog("Singly Linked Graph -  Information");
         graph = new SinglyLinkedListGraph();
         initGraph();
         pane.setOnScroll(event -> {
