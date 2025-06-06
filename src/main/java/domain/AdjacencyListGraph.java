@@ -10,7 +10,7 @@ import domain.stack.StackException;
 import static util.Utility.compare;
 
 public class AdjacencyListGraph implements Graph {
-    public Vertex[] vertexList; //arreglo de objetos tupo vértice
+    public Vertex[] vertexList; //arreglo de objetos tipo vértice
 
     private int n; //max de elementos
     private int counter; //contador de vertices

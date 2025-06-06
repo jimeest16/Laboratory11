@@ -88,8 +88,7 @@ public class AdjacencyMatrixGraphController {
         dialog.showAndWait().ifPresent(value -> {
             try {
                 int val = Integer.parseInt(value);
-                boolean found = false;
-                graph.containsVertex(val);
+                boolean found = graph.containsVertex(val);
                 showAlert("Value " + (found ? "found." : "not found."));
             } catch (NumberFormatException e) {
                 showAlert("Invalid number!");

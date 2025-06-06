@@ -155,9 +155,9 @@ public class FXUtil {
         pane.getChildren().clear(); // Limpiar antes de dibujar
 
         int size = graph.size();
-        double radius = 150;
-        double centerX = 250;
-        double centerY = 250;
+        double radius = 100;
+        double centerX = 150;
+        double centerY = 150;
 
         Point2D[] positions = new Point2D[size];
 
@@ -181,7 +181,7 @@ public class FXUtil {
         for (int i = 0; i < size; i++) {
             Object fromVertex = graph.getVertexAt(i);
             SinglyLinkedList edgeList = graph.vertexList[i].edgesList;
-
+            if (!edgeList.isEmpty()) {
             for (int j = 1; j <= edgeList.size(); j++) {
                 EdgeWeight edge = (EdgeWeight) edgeList.getNode(j).getData();
                 Object toVertex = edge.getEdge();
@@ -213,6 +213,7 @@ public class FXUtil {
                         pane.getChildren().add(weightText);
                     }
                 }
+            }
             }
         }
     }
