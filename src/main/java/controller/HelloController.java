@@ -34,11 +34,6 @@ public class HelloController {
         this.bp.setCenter(ap);
     }
 
-    @FXML
-    public void Exit(ActionEvent actionEvent) {
-        System.exit(0);
-    }
-
     public void AdjacencyMatrixGraph(ActionEvent actionEvent) {
         load("/ucr/lab/adjacencyMatrixGraph.fxml");
     }
@@ -53,4 +48,9 @@ public class HelloController {
     public void MatrizOperations(ActionEvent actionEvent) {
         load("/ucr/lab/matrixOperation.fxml");
     }
+    @FXML
+    public void Exit(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
 }
