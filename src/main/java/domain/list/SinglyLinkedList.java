@@ -2,6 +2,7 @@ package domain.list;
 
 import domain.EdgeWeight;
 import domain.Vertex;
+import util.Utility;
 
 public class SinglyLinkedList implements List {
     private Node first; //apuntador al inicio de la lista
@@ -233,36 +234,16 @@ public class SinglyLinkedList implements List {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
-        Node aux = first;
-        int position = 1;
-
-        while (aux != null) {
-            Vertex vertex = (Vertex) aux.data;
-
-            result.append("Vertex ").append(position)
-                    .append(": ").append(vertex.data)
-                    .append("\nEdges:\n");
-
-            SinglyLinkedList edges = vertex.edgesList;
-            if (edges != null && !edges.isEmpty()) {
-                Node edgeNode = edges.first;
-                while (edgeNode != null) {
-                    EdgeWeight edge = (EdgeWeight) edgeNode.data;
-                    result.append("  - Edge: ").append(edge.getEdge())
-                            .append(", Weight: ").append(edge.getWeight())
-                            .append("\n");
-                    edgeNode = edgeNode.next;
-                }
-            } else {
-                result.append("  No edges\n");
-            }
-
-            result.append("\n");
-            aux = aux.next;
-            position++;
+        if (isEmpty())
+            return "Singly Linked List is empty";
+        StringBuilder result = new StringBuilder("\n");
+        Node current = this.first; //aux para moverme por la lista y no perder el puntero al incio
+        String instance = Utility.instanceOf(first.getData(), first.getData());
+        boolean isClass = !instance.equals("Integer") && !instance.equals("Double") && !instance.equals("Character") && !instance.equals("String");
+        while (current != null) {
+            result.append(current.getData()).append(isClass? "\n" : " ");
+            current = current.next; //se mueve al sgte nodo
         }
-
         return result.toString();
     }
 

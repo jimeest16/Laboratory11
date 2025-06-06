@@ -54,7 +54,7 @@ public class Utility {
         return 2; //Unknown
     }
 
-    private static String instanceOf(Object a, Object b) {
+    public static String instanceOf(Object a, Object b) {
         if(a instanceof Integer && b instanceof Integer) return "Integer";
         if(a instanceof String && b instanceof String) return "String";
         if(a instanceof Character && b instanceof Character) return "Character";
@@ -115,5 +115,17 @@ public class Utility {
                 'U', 'V', 'W', 'X', 'Y', 'Z'
         };
         return letters[random(letters.length - 1)];
+    }
+
+    public static String getName() {
+        String[] names = {
+                "Alana", "Pablo", "Ana", "María", "Victoria", "Nicole",
+                "Mateo", "Fabiana", "Natalia", "Valeria",
+                "Luis", "Elena", "Raúl", "César", "Lucas",
+                "Clara", "Diego", "Sara", "Iván", "Julia",
+                "David", "Noa", "Bruno", "Emma", "Luz",
+                "Gael", "Iris", "Hugo", "Vera", "Leo"
+        };
+        return names[random(names.length-1)];
     }
 }

@@ -24,11 +24,6 @@ public class Vertex {
     }
     @Override
     public String toString() {
-        return "Vertex{" +
-                "data=" + data +
-                ", visited=" + visited +
-                ", edgesList=" + edgesList +
-                '}';
+        return data+"";
     }
-
 }
