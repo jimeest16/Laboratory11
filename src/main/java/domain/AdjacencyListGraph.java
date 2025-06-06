@@ -1,6 +1,7 @@
 package domain;
 
 import domain.list.ListException;
+import domain.list.SinglyLinkedList;
 import domain.queue.LinkedQueue;
 import domain.queue.QueueException;
 import domain.stack.LinkedStack;
@@ -9,7 +10,7 @@ import domain.stack.StackException;
 import static util.Utility.compare;
 
 public class AdjacencyListGraph implements Graph {
-    private Vertex[] vertexList; //arreglo de objetos tupo vértice
+    public Vertex[] vertexList; //arreglo de objetos tupo vértice
 
     private int n; //max de elementos
     private int counter; //contador de vertices
@@ -302,6 +303,70 @@ public class AdjacencyListGraph implements Graph {
             throw new GraphException("Índice fuera de rango");
         }
         return vertexList[index].data;
+    }
+    public String getAdjacencyList(Object vertex) throws GraphException, ListException {
+        int index = indexOf(vertex);
+        if (index == -1) {
+            throw new GraphException("El vértice no existe en el grafo");
+        }
+
+        String result = "Adyacencias de [" + vertex + "]: ";
+        if (vertexList[index].edgesList.isEmpty()) {
+            result += "No tiene vértices adyacentes.";
+        } else {
+            for (int j = 1; j <= vertexList[index].edgesList.size(); j++) {
+                EdgdeWeight edge = (EdgdeWeight) vertexList[index].edgesList.getNode(j).getData();
+                result += "(" + edge.getEdge() + ", weight=" + edge.getWeight() + ") ";
+            }
+        }
+        return result;
+    }
+
+    public Object getWeight(Object a, Object b) throws GraphException, ListException {
+        if (!containsVertex(a) || !containsVertex(b)) {
+            throw new GraphException("Uno o ambos vértices no existen.");
+        }
+
+        int index = indexOf(a);
+        for (int i = 1; i <= vertexList[index].edgesList.size(); i++) {
+            EdgdeWeight edge = (EdgdeWeight) vertexList[index].edgesList.getNode(i).getData();
+            if (compare(edge.getEdge(), b) == 0) {
+                return edge.getWeight();
+            }
+        }
+
+        return null; // No existe una arista entre a y b
+    }
+    public SinglyLinkedList getAdjacencyListVertices(Object vertex) throws GraphException {
+        int index = indexOf(vertex);
+        if (index == -1) {
+            throw new GraphException("Vertex not found: " + vertex);
+        }
+        return vertexList[index].edgesList; // Retorna la lista de aristas (vecinos)
+    }
+    public String toStringGraph() throws GraphException, ListException {
+        StringBuilder result = new StringBuilder("SINGLY LINKED LIST GRAPH CONTENT\n");
+
+        for (int i = 0; i < size(); i++) {
+            String vertex = (String) getVertexAt(i);
+            result.append("The vertex in the position ").append(i + 1).append(" is: ").append(vertex).append("\n");
+
+            SinglyLinkedList edges = getAdjacencyListVertices(vertex);
+
+            if (edges != null && !edges.isEmpty()) {
+                result.append("Edges and weight:\n");
+                for (int j = 1; j <= edges.size(); j++) {
+                    EdgdeWeight edge = (EdgdeWeight) edges.getNode(j).getData();
+                    result.append("  Edge: ").append(edge.getEdge())
+                            .append(", weight = ").append(edge.getWeight()).append("\n");
+                }
+            } else {
+                result.append("  No edges.\n");
+            }
+            result.append("\n");
+        }
+
+        return result.toString();
     }
 
 }

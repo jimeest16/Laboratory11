@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" prefHeight="687.0" prefWidth="858.0" style="-fx-background-color: #ebecec;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LinkedGraphController">
+
+   <!-- Título principal -->
+   <Pane fx:id="titlePane" prefHeight="69.0" prefWidth="878.0" style="-fx-background-color: #bfc2c5;">
+      <Text fx:id="titleText" fill="#000000d9" fontSmoothingType="LCD" layoutX="129.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Singly Linked List Graph">
+         <font>
+            <Font name="Elephant" size="40.0" />
+         </font>
+      </Text>
+   </Pane>
+
+   <!-- Botones -->
+   <Pane fx:id="buttonsPane" layoutX="11.0" layoutY="69.0" prefHeight="123.0" prefWidth="868.0">
+      <Button fx:id="btnRandomize" layoutX="49.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleRandomize" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: #e36a68;" text="Randomize">
+         <font>
+            <Font name="Bell MT Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnContainsVertex" layoutX="309.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleContainsVertex" prefHeight="44.0" prefWidth="188.0" style="-fx-background-color: #f5ef6d;" text="Contains Vertex">
+         <font>
+            <Font name="Bell MT Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnContainsEdge" layoutX="305.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleContainsEdge" prefHeight="44.0" prefWidth="195.0" style="-fx-background-color: #b7f290;" text="Contains Edge">
+         <font>
+            <Font name="Bell MT Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnToString" layoutX="49.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleToString" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: #e3b168;" text="toString">
+         <font>
+            <Font name="Bell MT Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnDFS" layoutX="612.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleDFS" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #90f2d5;" text="DFS Tour">
+         <font>
+            <Font name="Bell MT Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnBFS" layoutX="612.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleBFS" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #90cdf2;" text="BFS Tour">
+         <font>
+            <Font name="Bell MT Bold" size="20.0" />
+         </font>
+      </Button>
+   </Pane>
+
+
+   <Pane fx:id="movementPane" layoutX="72.0" layoutY="196.0" prefHeight="88.0" prefWidth="735.0">
+      <children>
+         <TextArea fx:id="movementTextArea" editable="false" layoutX="71.0" layoutY="28.0" prefHeight="44.0" prefWidth="533.0" wrapText="true" />
+         <Text fx:id="movementLabel" layoutX="281.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movement:" wrappingWidth="155.4375">
+            <font>
+               <Font name="Bookshelf Symbol 7" size="28.0" />
+            </font>
+         </Text>
+      </children>
+   </Pane>
+
+   <!-- Área para mostrar información del grafo -->
+   <Pane fx:id="infoPane" layoutX="14.0" layoutY="306.0" prefHeight="435.0" prefWidth="398.0">
+      <children>
+         <TextArea fx:id="infoTextArea" editable="false" layoutX="27.0" layoutY="33.0" prefHeight="373.0" prefWidth="352.0" wrapText="true" />
+      </children>
+   </Pane>
+   <Text fx:id="infoLabel" layoutX="48.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information of the graph:">
+      <font>
+         <Font name="Bookshelf Symbol 7" size="28.0" />
+      </font>
+   </Text>
+
+   <!-- Pane para dibujar el grafo -->
+   <Pane fx:id="graphPane" layoutX="423.0" layoutY="336.0" prefHeight="360.0" prefWidth="390.0" style="-fx-background-color: white; -fx-border-color: black;" />
+   <Text fx:id="graphLabel" layoutX="535.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graph:">
+      <font>
+         <Font name="Bookshelf Symbol 7" size="28.0" />
+      </font>
+   </Text>
+   <Button fx:id="btnClear" layoutX="722.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleClear" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: #cfd5d9;" text="Clear">
+      <font>
+         <Font name="Bell MT Bold" size="20.0" />
+      </font>
+   </Button>
+
+</AnchorPane>

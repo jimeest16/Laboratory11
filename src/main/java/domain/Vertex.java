@@ -7,6 +7,7 @@ public class Vertex {
     private boolean visited; //para los recorridos DFS, BFS
     public SinglyLinkedList edgesList; //lista de aristas
 
+
     //Constructor
     public Vertex(Object data){
         this.data = data;
@@ -21,4 +22,13 @@ public class Vertex {
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
+    @Override
+    public String toString() {
+        return "Vertex{" +
+                "data=" + data +
+                ", visited=" + visited +
+                ", edgesList=" + edgesList +
+                '}';
+    }
+
 }

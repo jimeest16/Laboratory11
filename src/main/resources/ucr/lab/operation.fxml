@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #d7dcdd;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OperationController">
+<AnchorPane prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #d7dcdd;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MatrixController">
 
     <VBox layoutX="14.0" layoutY="160.0" prefWidth="180" spacing="8">
         <Label text="Choice a type of tree!">

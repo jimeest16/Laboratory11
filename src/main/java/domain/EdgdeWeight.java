@@ -29,9 +29,12 @@ public class EdgdeWeight {
 
     @Override
     public String toString() {
-        if (weight == null) return "Edge=" + edge;
-
-        else return "Edge" + edge + " - Weight" + weight;
+        if (weight == null) {
+            return String.format("Edge=%s", edge);
+        } else {
+            return String.format("Edge=%s - Weight=%s", edge, weight);
+        }
     }
+
 
 }
