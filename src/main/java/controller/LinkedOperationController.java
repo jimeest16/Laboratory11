@@ -1,6 +1,5 @@
 package controller;
 
-import domain.Graph;
 import domain.GraphException;
 import domain.SinglyLinkedListGraph;
 import domain.list.ListException;
@@ -27,7 +26,6 @@ public class LinkedOperationController {
     SinglyLinkedListGraph graph;
     private ArrayList<String> unusedNames;
     private ArrayList<String> usedNames;
-
     private double scale = 1.0;
     private final double SCALE_DELTA = 1.1;
     private Alert alert;
@@ -90,7 +88,7 @@ public class LinkedOperationController {
     @FXML
     public void handleAddVertex() {
         try {
-            int size = graph.size();
+            int size = !graph.isEmpty()? graph.size() : 0;
             if (size > 17)
                 label.setText("Graph contains too many vertices.");
             else {
@@ -117,7 +115,8 @@ public class LinkedOperationController {
             graph.removeVertex(name);
             unusedNames.add(name);
             usedNames.remove(name);
-            label.setText("Vertex: [" + name + "] removed. Total vertices: " + graph.size());
+            label.setText("Vertex: [" + name + "] removed. Total vertices: " +
+                    (!graph.isEmpty()? graph.size() : 0));
             refreshMatrixDisplay();
             drawGraph();
         } catch (GraphException | ListException e) {
@@ -128,14 +127,83 @@ public class LinkedOperationController {
 
     @FXML
     public void handleAddEdge() {
+        if (graph.isEmpty())
+            label.setText("No vertices to add edges.");
+        else try {
+            int size = graph.size();
+            if (size < 2)
+                label.setText("Not enough vertices to add edges.");
+            else {
+                boolean added = false;
+                String a = "", b = "";
+                int weight = 0;
+                for (int i = 0; i < size-1 && !added; i++) {
+                    for (int j = 0; j < size-1 && !added; j++) {
+                        if (i == j) j++;
+                        a = usedNames.get(i);
+                        b = usedNames.get(j);
+                        if (!graph.containsEdge(a, b)) {
+                            weight = Utility.randomMinMax(1000, 2000);
+                            graph.addEdgeWeight(a, b, weight);
+                            added = true;
+                        }
+                    }
+                }
+                if (!added)
+                    label.setText("All posible edges have been added.");
+                else {
+                    label.setText("Edge between vertex [" + a + "] and [" + b + "] added. Weight: " + weight);
+                    refreshMatrixDisplay();
+                    drawGraph();
+                }
+            }
+        } catch (GraphException | ListException e) {
+            alert.setContentText("Error: " + e.getMessage());
+            alert.show();
+        }
     }
 
     @FXML
     public void handleRemoveEdge() {
+        if (graph.isEmpty())
+            label.setText("No vertices to remove edges.");
+        else try {
+            int size = graph.size();
+            if (size < 2)
+                label.setText("Not enough vertices to remove edges.");
+            else {
+                boolean removed = false;
+                String a = "", b = "";
+                for (int i = 0; i < size-1 && !removed; i++) {
+                    for (int j = 0; j < size-1 && !removed; j++) {
+                        if (i == j) j++;
+                        a = usedNames.get(i);
+                        b = usedNames.get(j);
+                        if (graph.containsEdge(a, b)) {
+                            graph.removeEdge(a, b);
+                            removed = true;
+                        }
+                    }
+                }
+                if (!removed)
+                    label.setText("All edges have been removed.");
+                else {
+                    label.setText("Edge between vertex [" + a + "] and [" + b + "] added.");
+                    refreshMatrixDisplay();
+                    drawGraph();
+                }
+            }
+        } catch (GraphException | ListException e) {
+            alert.setContentText("Error: " + e.getMessage());
+            alert.show();
+        }
     }
 
     private void drawGraph() throws ListException {
-        util.FXUtil.drawGraph(graph, pane);
+        if (graph.isEmpty())
+            pane.getChildren().clear();
+        else
+            FXUtil.drawGraph(graph, pane);
     }
 
     private void refreshMatrixDisplay() {
@@ -150,8 +218,8 @@ public class LinkedOperationController {
                 "Darwin", "Tesla", "Freud", "Einstein", "Napoleon",
                 "Lincoln", "Bolivar", "Cleopatra", "Socrates", "Voltaire",
                 "Homer", "FridaKahlo", "MarieCurie", "Kepler", "Fermi",
-                "Lavoisier", "Curie", "Turing", "Hammurabi", "Bach",
-                "Mozart", "Beethoven", "Caesar", "Plato"
+                "Lavoisier", "Plato", "Turing", "Hammurabi", "Bach",
+                "Mozart", "Beethoven", "Caesar"
         ));
     }
 }

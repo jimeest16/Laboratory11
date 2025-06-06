@@ -254,8 +254,9 @@ public class FXUtil {
                     Object toVertex = edge.getEdge();
 
                     int toIndex = -1;
-                    for (int k = 0; k < size; k++) {
-                        if (graph.vertexList.getNode(i+1).data.equals(toVertex)) {
+                    for (int k = 0; k <= size; k++) {
+                        Vertex aux  = (Vertex) graph.vertexList.getNode(k+1).data;
+                        if (aux.data.equals(toVertex)) {
                             toIndex = k;
                             break;
                         }
