@@ -35,6 +35,16 @@
                     <Font name="Arial Bold Italic" size="19.0" />
                 </font>
             </Button>
+         <Button mnemonicParsing="false" onAction="#ListOperations" prefHeight="62.0" prefWidth="219.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="List Operations" textFill="#000000b2">
+            <font>
+               <Font name="Arial Bold Italic" size="19.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#LinkedOperations" prefHeight="62.0" prefWidth="219.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Linked Operations" textFill="#000000b2">
+            <font>
+               <Font name="Arial Bold Italic" size="19.0" />
+            </font>
+         </Button>
             <Button layoutX="10.0" layoutY="196.0" mnemonicParsing="false" onAction="#Exit" prefHeight="62.0" prefWidth="219.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Exit" textFill="#000000b2">
                 <font>
                     <Font name="Arial Bold Italic" size="30.0" />

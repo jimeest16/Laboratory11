@@ -71,8 +71,6 @@ public class AdjacencyMatrixOperationController {
         return value;
     }
 
-
-
     @FXML
     private void handleAddVertex() {
         try {

@@ -1,6 +1,7 @@
 package util;
 
 import domain.EdgeWeight;
+import domain.Vertex;
 
 import java.text.DecimalFormat;
 import java.util.Random;
@@ -37,12 +38,14 @@ public class Utility {
             case "Character":
                 Character c1 = (Character)a; Character c2 = (Character)b;
                 return c1.compareTo(c2)<0 ? -1 : c1.compareTo(c2)>0 ? 1 : 0;
-
             case "EdgeWeight":
                 EdgeWeight eW1 = (EdgeWeight) a;
                 EdgeWeight eW2 = (EdgeWeight) b;
                 return compare(eW1.getEdge(),eW2.getEdge());
-
+            case "Vertex":
+                Vertex v1 = (Vertex) a;
+                Vertex v2 = (Vertex) b;
+                return compare(v1.data,v2.data);
         }
         return 2; //Unknown
     }
@@ -52,7 +55,7 @@ public class Utility {
         if(a instanceof String && b instanceof String) return "String";
         if(a instanceof Character && b instanceof Character) return "Character";
         if(a instanceof EdgeWeight && b instanceof EdgeWeight) return "EdgeWeight";
-
+        if(a instanceof Vertex && b instanceof Vertex) return "Vertex";
         return "Unknown";
     }
     //PARA Adjenency Matrix Graph TEST:

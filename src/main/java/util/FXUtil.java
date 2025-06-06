@@ -179,45 +179,109 @@ public class FXUtil {
 
         // 2. Dibujar aristas y pesos
         for (int i = 0; i < size; i++) {
-            Object fromVertex = graph.getVertexAt(i);
             SinglyLinkedList edgeList = graph.vertexList[i].edgesList;
             if (!edgeList.isEmpty()) {
-            for (int j = 1; j <= edgeList.size(); j++) {
-                EdgeWeight edge = (EdgeWeight) edgeList.getNode(j).getData();
-                Object toVertex = edge.getEdge();
+                for (int j = 1; j <= edgeList.size(); j++) {
+                    EdgeWeight edge = (EdgeWeight) edgeList.getNode(j).getData();
+                    Object toVertex = edge.getEdge();
 
-                int toIndex = -1;
-                for (int k = 0; k < size; k++) {
-                    if (graph.getVertexAt(k).equals(toVertex)) {
-                        toIndex = k;
-                        break;
+                    int toIndex = -1;
+                    for (int k = 0; k < size; k++) {
+                        if (graph.getVertexAt(k).equals(toVertex)) {
+                            toIndex = k;
+                            break;
+                        }
+                    }
+
+                    // Para evitar dibujar la arista dos veces (grafo no dirigido)
+                    if (toIndex > i) {
+                        Point2D p1 = positions[i];
+                        Point2D p2 = positions[toIndex];
+
+                        Line line = new Line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+                        line.setStroke(Color.GRAY);
+
+                        pane.getChildren().add(line);
+
+                        // Mostrar peso si existe
+                        if (edge.getWeight() != null) {
+                            double midX = (p1.getX() + p2.getX()) / 2;
+                            double midY = (p1.getY() + p2.getY()) / 2;
+                            Text weightText = new Text(midX, midY, edge.getWeight().toString());
+                            weightText.setFill(Color.RED);
+                            pane.getChildren().add(weightText);
+                        }
                     }
                 }
-
-                // Para evitar dibujar la arista dos veces (grafo no dirigido)
-                if (toIndex > i) {
-                    Point2D p1 = positions[i];
-                    Point2D p2 = positions[toIndex];
-
-                    Line line = new Line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
-                    line.setStroke(Color.GRAY);
-
-                    pane.getChildren().add(line);
-
-                    // Mostrar peso si existe
-                    if (edge.getWeight() != null) {
-                        double midX = (p1.getX() + p2.getX()) / 2;
-                        double midY = (p1.getY() + p2.getY()) / 2;
-                        Text weightText = new Text(midX, midY, edge.getWeight().toString());
-                        weightText.setFill(Color.RED);
-                        pane.getChildren().add(weightText);
-                    }
-                }
-            }
             }
         }
     }
 
+    public static void drawGraph(SinglyLinkedListGraph graph, Pane pane) throws ListException {
+        pane.getChildren().clear(); // limpiar antes de dibujar
 
+        int size = graph.size();
+        double radius = 100;
+        double centerX = 200;
+        double centerY = 200;
 
+        // Coordenadas de los nodos
+        Point2D[] positions = new Point2D[size];
+
+        // 1. Dibujar vértices en círculo
+        for (int i = 0; i < size; i++) {
+            double angle = 2 * Math.PI * i / size;
+            double x = centerX + radius * Math.cos(angle);
+            double y = centerY + radius * Math.sin(angle);
+            positions[i] = new Point2D(x, y);
+
+            Circle circle = new Circle(x, y, 20);
+            circle.setFill(Color.LIGHTBLUE);
+            circle.setStroke(Color.BLACK);
+
+            Text text = new Text(x - 5, y + 5, graph.vertexList.getNode(i+1).data.toString());
+
+            pane.getChildren().addAll(circle, text);
+        }
+
+        // 2. Dibujar aristas y pesos
+        for (int i = 0; i < size; i++) {
+            Vertex vertex = (Vertex) graph.vertexList.getNode(i+1).data;
+            SinglyLinkedList edgeList = vertex.edgesList;
+            if (!edgeList.isEmpty()) {
+                for (int j = 1; j <= edgeList.size(); j++) {
+                    EdgeWeight edge = (EdgeWeight) edgeList.getNode(j).getData();
+                    Object toVertex = edge.getEdge();
+
+                    int toIndex = -1;
+                    for (int k = 0; k < size; k++) {
+                        if (graph.vertexList.getNode(i+1).data.equals(toVertex)) {
+                            toIndex = k;
+                            break;
+                        }
+                    }
+
+                    // Para evitar dibujar la arista dos veces (grafo no dirigido)
+                    if (toIndex > i) {
+                        Point2D p1 = positions[i];
+                        Point2D p2 = positions[toIndex];
+
+                        Line line = new Line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+                        line.setStroke(Color.GRAY);
+
+                        pane.getChildren().add(line);
+
+                        // Mostrar peso si existe
+                        if (edge.getWeight() != null) {
+                            double midX = (p1.getX() + p2.getX()) / 2;
+                            double midY = (p1.getY() + p2.getY()) / 2;
+                            Text weightText = new Text(midX, midY, edge.getWeight().toString());
+                            weightText.setFill(Color.RED);
+                            pane.getChildren().add(weightText);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }//end FXUtil

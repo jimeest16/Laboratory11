@@ -34,17 +34,21 @@ public class HelloController {
         this.bp.setCenter(ap);
     }
 
+    @FXML
     public void AdjacencyMatrixGraph(ActionEvent actionEvent) {
         load("/ucr/lab/adjacencyMatrixGraph.fxml");
     }
 
+    @FXML
     public void AdjacencyListGraph(ActionEvent actionEvent) {
         load("/ucr/lab/listGraph.fxml");
     }
 
+    @FXML
     public void SinglyLinkedListGraph(ActionEvent actionEvent) {
         load("/ucr/lab/linkedGraph.fxml");
     }
+    @FXML
     public void MatrizOperations(ActionEvent actionEvent) {
         load("/ucr/lab/matrixOperation.fxml");
     }
@@ -53,4 +57,13 @@ public class HelloController {
         System.exit(0);
     }
 
+    @FXML
+    public void LinkedOperations(ActionEvent actionEvent) {
+        load("/ucr/lab/linkedOperation.fxml");
+    }
+
+    @FXML
+    public void ListOperations(ActionEvent actionEvent) {
+        load("/ucr/lab/listOperation.fxml");
+    }
 }

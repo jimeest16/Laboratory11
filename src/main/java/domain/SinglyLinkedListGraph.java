@@ -8,7 +8,7 @@ import domain.stack.LinkedStack;
 import domain.stack.StackException;
 
 public class SinglyLinkedListGraph implements Graph {
-    private SinglyLinkedList vertexList; //lista enlazada de vértices
+    public SinglyLinkedList vertexList; //lista enlazada de vértices
 
     //para los recorridos dfs, bfs
     private LinkedStack stack;
@@ -48,7 +48,7 @@ public class SinglyLinkedListGraph implements Graph {
         if(isEmpty())
             throw new GraphException("Singly Linked List Graph is Empty");
         int index = indexOf(a); //buscamos el índice del elemento en la lista enlazada
-        if(index ==-1) return false;
+        if(index == -1) return false;
         Vertex vertex = (Vertex) vertexList.getNode(index).data;
         return vertex!=null && !vertex.edgesList.isEmpty()
                 && vertex.edgesList.contains(new EdgeWeight(b, null));
@@ -75,7 +75,8 @@ public class SinglyLinkedListGraph implements Graph {
     private int indexOf(Object element) throws ListException {
         for(int i=1;i<=vertexList.size();i++){
             Vertex vertex = (Vertex)vertexList.getNode(i).data;
-            if(util.Utility.compare(vertex.data, element)==0){
+            Object aux = element instanceof Vertex? ((Vertex)element).data : element;
+            if(util.Utility.compare(vertex.data, aux)==0){
                 return i; //encontro el vertice
             }
         }//for
@@ -106,24 +107,14 @@ public class SinglyLinkedListGraph implements Graph {
     public void removeVertex(Object element) throws GraphException, ListException {
         if(isEmpty())
             throw new GraphException("Singly Linked List Graph is Empty");
-        boolean removed = false;
-        if(!vertexList.isEmpty() && containsVertex(element)){
-            for (int i = 1; !removed&&i <= vertexList.size(); i++) {
-                Vertex vertex = (Vertex) vertexList.getNode(i).data;
-                if(util.Utility.compare(vertex.data, element)==0){ //ya lo encontro
-                    vertexList.remove(new Vertex(element));
-                    removed = true;
-                    //ahora se debe eliminar la entrada de ese vertice de todas
-                    //las listas de aristas de los otros vertices
-                    int n = vertexList.size();
-                    for (int j=1; vertexList!=null&&!vertexList.isEmpty()&&j<=n; j++) {
-                        vertex = (Vertex) vertexList.getNode(j).data;
-                        if(!vertex.edgesList.isEmpty())
-                            addRemoveVertexEdgeWeight(vertex.data, element, null, "remove");
-                    }
-                }//if
-            }//for i
-        }//if
+        if (!containsVertex(element))
+            throw new GraphException("There is no vertex associated with the given element");
+        for (int i = 1; i <= vertexList.size(); i++){
+            Vertex vertex = (Vertex) vertexList.getNode(i).data;
+            if (containsEdge(vertex, element))
+                removeEdge(vertex, element);
+        }
+        vertexList.remove(new Vertex(element));
     }
 
     @Override
@@ -136,21 +127,21 @@ public class SinglyLinkedListGraph implements Graph {
     }
 
     private void addRemoveVertexEdgeWeight(Object a, Object b, Object weight, String action) throws ListException{
-        for (int i = 1; i <= vertexList.size(); i++) {
+        int i = indexOf(a);
+        if (i != -1) {
             Vertex vertex = (Vertex) vertexList.getNode(i).data;
-            if(util.Utility.compare(vertex.data, a)==0){
-                switch(action){
-                    case "addEdge":
-                        vertex.edgesList.add(new EdgeWeight(b, weight));
-                        break;
-                    case "addWeight":
-                        vertex.edgesList.getNode(new EdgeWeight(b, weight))
-                                .setData(new EdgeWeight(b, weight));
-                        break;
-                    case "remove":
-                        if(vertex.edgesList!=null&&!vertex.edgesList.isEmpty())
-                            vertex.edgesList.remove(new EdgeWeight(b, weight));
-                }
+            switch (action) {
+                case "addEdge":
+                    vertex.edgesList.add(new EdgeWeight(b, weight));
+                    break;
+                case "addWeight":
+                    vertex.edgesList.getNode(new EdgeWeight(b, weight))
+                            .setData(new EdgeWeight(b, weight));
+                    break;
+                case "remove":
+                    if (!vertex.edgesList.isEmpty())
+                        vertex.edgesList.remove(new EdgeWeight(b, weight));
+                    break;
             }
         }
     }
