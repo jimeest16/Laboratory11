@@ -1,7 +1,5 @@
 package domain.list;
 
-import domain.EdgeWeight;
-import domain.Vertex;
 import util.Utility;
 
 public class SinglyLinkedList implements List {

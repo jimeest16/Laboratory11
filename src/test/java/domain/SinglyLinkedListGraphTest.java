@@ -6,8 +6,6 @@ import domain.stack.StackException;
 import org.junit.jupiter.api.Test;
 import util.Utility;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class SinglyLinkedListGraphTest {
     @Test
     void test() {

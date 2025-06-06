@@ -6,11 +6,6 @@ import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Utility {
-
-    //static init
-    static {
-    }
-
     public static String format(double value){
         return new DecimalFormat("###,###,###.##").format(value);
     }
@@ -30,8 +25,6 @@ public class Utility {
     public static int randomMinMax(int min, int max) {
         return new Random().nextInt((max - min) + 1) + min;
     }
-
-
 
     public static int compare(Object a, Object b) {
         switch (instanceOf(a, b)){
