@@ -9,7 +9,7 @@ import domain.stack.StackException;
 import static util.Utility.compare;
 
 public class AdjacencyListGraph implements Graph {
-    private Vertex[] vertexList; //arreglo de objetos tupo vértice
+    public Vertex[] vertexList; //arreglo de objetos tupo vértice
 
     private int n; //max de elementos
     private int counter; //contador de vertices
@@ -72,7 +72,7 @@ public class AdjacencyListGraph implements Graph {
             throw new GraphException("Graph is full");
 
         //return indexOf(compare(a,0))!=-1;
-        return !vertexList[indexOf(a)].edgesList.isEmpty() && vertexList[indexOf(a)].edgesList.contains(new EdgdeWeight(b, null));
+        return !vertexList[indexOf(a)].edgesList.isEmpty() && vertexList[indexOf(a)].edgesList.contains(new EdgeWeight(b, null));
 
 
     }
@@ -93,10 +93,10 @@ public class AdjacencyListGraph implements Graph {
                     + a + "]" + "y" + "[" +
                     b + "]");
         // para que logre contener el peso
-        vertexList[indexOf(a)].edgesList.add(new EdgdeWeight(b, null));
+        vertexList[indexOf(a)].edgesList.add(new EdgeWeight(b, null));
         // grafo no dirigido
         // grafo no dirigido
-        vertexList[indexOf(b)].edgesList.add(new EdgdeWeight(a, null));
+        vertexList[indexOf(b)].edgesList.add(new EdgeWeight(a, null));
     }
 
     private int indexOf(Object element) {
@@ -140,14 +140,14 @@ public class AdjacencyListGraph implements Graph {
     }
 
     private void updateEdgesListEdgesWeight(Object a, Object b, Object weight) throws ListException {
-        EdgdeWeight ew = (EdgdeWeight) vertexList[indexOf(a)].edgesList
-                .getNode(new EdgdeWeight(b, null)).getData();
+        EdgeWeight ew = (EdgeWeight) vertexList[indexOf(a)].edgesList
+                .getNode(new EdgeWeight(b, null)).getData();
 
         // ahora agrego el peso
         ew.setWeight(weight);
 
         // ahora actualizo la info en la lista de aristas correspondiente
-        vertexList[indexOf(a)].edgesList.getNode(new EdgdeWeight(b, null))
+        vertexList[indexOf(a)].edgesList.getNode(new EdgeWeight(b, null))
                 .setData(ew);
 
 
@@ -160,8 +160,8 @@ public class AdjacencyListGraph implements Graph {
                     + a + "]" + "y" + "[" +
                     b + "]");
         if (!containsEdge(a, b)) {
-            vertexList[indexOf(a)].edgesList.add(new EdgdeWeight(b, weight));
-            vertexList[indexOf(b)].edgesList.add(new EdgdeWeight(a, weight));
+            vertexList[indexOf(a)].edgesList.add(new EdgeWeight(b, weight));
+            vertexList[indexOf(b)].edgesList.add(new EdgeWeight(a, weight));
         }
     }
 
@@ -201,12 +201,12 @@ public class AdjacencyListGraph implements Graph {
 
         if (!vertexList[indexOf(a)].edgesList.isEmpty()) {
 
-            vertexList[indexOf(a)].edgesList.remove(new EdgdeWeight(b, null));
+            vertexList[indexOf(a)].edgesList.remove(new EdgeWeight(b, null));
         }
         // grafo no dirigido
         if (!vertexList[indexOf(b)].edgesList.isEmpty()) {
 
-            vertexList[indexOf(b)].edgesList.remove(new EdgdeWeight(a, null));
+            vertexList[indexOf(b)].edgesList.remove(new EdgeWeight(a, null));
         }
     }
 
@@ -268,7 +268,7 @@ public class AdjacencyListGraph implements Graph {
         Object vertexData = vertexList[index].data;
 
         for (int i = 0; i < counter; i++) {
-            if (vertexList[index].edgesList.contains(new EdgdeWeight(vertexList[i].data, null))
+            if (vertexList[index].edgesList.contains(new EdgeWeight(vertexList[i].data, null))
                     && !vertexList[i].isVisited()) {
                 return i; // retorna la posición del vértice adyacente no visitado
             }
@@ -285,7 +285,7 @@ public class AdjacencyListGraph implements Graph {
             try {
                 if (!vertexList[i].edgesList.isEmpty()) {
                     for (int j = 1; j <= vertexList[i].edgesList.size(); j++) {
-                        EdgdeWeight edge = (EdgdeWeight) vertexList[i].edgesList.getNode(j).getData();
+                        EdgeWeight edge = (EdgeWeight) vertexList[i].edgesList.getNode(j).getData();
                         result += "(" + edge.getEdge() + ", weight=" + edge.getWeight() + ") ";
                     }
                 }

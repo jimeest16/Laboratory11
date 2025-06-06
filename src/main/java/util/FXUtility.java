@@ -61,4 +61,10 @@ public class FXUtility {
             return "YES";
         else return "NO";
     }
+    public static void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

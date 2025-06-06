@@ -5,6 +5,8 @@ import domain.queue.QueueException;
 import domain.stack.StackException;
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLOutput;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static util.Utility.random;
 
@@ -136,6 +138,37 @@ class AdjacencyMatrixGraphTest {
             throw new RuntimeException(e);
 
         }
+    }
+    @Test
+    public void testNoRepetidos() throws GraphException, ListException {
+        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(10);
+        int[] numeros = new int[10];
+        int count = 0;
+
+        for (; count < 10;) {
+            int num = util.Utility.randomMinMax(0,99); // entre 0 y 99
+            boolean repetido = false;
+
+            // Verificar si ya existe
+            for (int i = 0; i < count; i++) {
+                if (numeros[i] == num) {
+                    repetido = true;
+                    break;
+                }
+            }
+
+            if (!repetido) {
+                numeros[count] = num;
+                count++;
+            }
+        }
+
+        // colocar los numeros en los vertices del grafico
+        for (int i = 0; i < 10; i++) {
+            graph.addVertex(numeros[i]);
+
+        }
+        System.out.println(graph);
     }
 
 }

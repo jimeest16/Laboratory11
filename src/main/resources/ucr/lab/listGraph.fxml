@@ -12,54 +12,54 @@
    <children>
       <Pane prefHeight="71.0" prefWidth="785.0" style="-fx-background-color: #d4eefa;">
          <children>
-            <Label layoutX="172.0" layoutY="14.0" text="Adjacency Matrix Graph">
+            <Label layoutX="197.0" layoutY="13.0" text="Adjacency List Graph">
                <font>
                   <Font name="Elephant" size="36.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane layoutY="71.0" prefHeight="129.0" prefWidth="778.0">
+      <Pane layoutX="-1.0" layoutY="71.0" prefHeight="129.0" prefWidth="785.0">
          <children>
-            <Button layoutX="597.0" layoutY="69.0" mnemonicParsing="false" onAction="#bfsTour" prefHeight="45.0" prefWidth="149.0" text="BFS Tour">
+            <Button layoutX="593.0" layoutY="68.0" mnemonicParsing="false" onAction="#bfsTour" prefHeight="45.0" prefWidth="149.0" text="BFS Tour">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="210.0" layoutY="70.0" mnemonicParsing="false" onAction="#containsEdge" prefHeight="44.0" prefWidth="161.0" text="Contains Edge">
+            <Button layoutX="230.0" layoutY="68.0" mnemonicParsing="false" onAction="#containsEdge" prefHeight="44.0" prefWidth="161.0" text="Contains Edge">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="398.0" layoutY="15.0" mnemonicParsing="false" onAction="#containsVextex" text="Contains Vextex">
+            <Button layoutX="407.0" layoutY="18.0" mnemonicParsing="false" onAction="#containsVextex" text="Contains Vextex">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="597.0" layoutY="14.0" mnemonicParsing="false" onAction="#dfsTour" prefHeight="45.0" prefWidth="149.0" text="DFS Tour">
+            <Button layoutX="593.0" layoutY="17.0" mnemonicParsing="false" onAction="#dfsTour" prefHeight="45.0" prefWidth="149.0" text="DFS Tour">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="20.0" layoutY="37.0" mnemonicParsing="false" onAction="#randomize" prefHeight="45.0" prefWidth="161.0" text="Randomize">
+            <Button layoutX="230.0" layoutY="17.0" mnemonicParsing="false" onAction="#addNextEdge" prefHeight="45.0" prefWidth="161.0" text="Add edge">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="398.0" layoutY="69.0" mnemonicParsing="false" onAction="#toString" prefHeight="45.0" prefWidth="167.0" text="To String">
+            <Button layoutX="407.0" layoutY="68.0" mnemonicParsing="false" onAction="#toString" prefHeight="45.0" prefWidth="167.0" text="To String">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="210.0" layoutY="15.0" mnemonicParsing="false" onAction="#addNextEdge" prefHeight="45.0" prefWidth="161.0" text="Add Edge">
+            <Button layoutX="45.0" layoutY="46.0" mnemonicParsing="false" onAction="#randomize" prefHeight="45.0" prefWidth="161.0" text="Randomize">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <TextArea fx:id="taMatrix" layoutX="14.0" layoutY="257.0" prefHeight="415.0" prefWidth="375.0" />
-      <Label fx:id="labelMatrix" layoutX="127.0" layoutY="200.0" prefHeight="44.0" prefWidth="512.0" text="Info:" />
+      <TextArea fx:id="textAreaGraph" layoutX="14.0" layoutY="257.0" prefHeight="415.0" prefWidth="375.0" />
+      <Label fx:id="labelToGraph" layoutX="127.0" layoutY="200.0" prefHeight="44.0" prefWidth="512.0" text="Info:" />
       <Pane fx:id="pane" layoutX="400.0" layoutY="257.0" prefHeight="415.0" prefWidth="383.0" />
       <Canvas height="415.0" layoutX="400.0" layoutY="257.0" width="375.0" />
    </children>

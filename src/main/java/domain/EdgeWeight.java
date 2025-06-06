@@ -1,12 +1,12 @@
 package domain;
 
-public class EdgdeWeight {
+public class EdgeWeight {
 
     // atributos
     private Object edge;
     private Object weight;
 
-    public EdgdeWeight(Object edge, Object weight) {
+    public EdgeWeight(Object edge, Object weight) {
         this.edge = edge;
         this.weight = weight;
     }
